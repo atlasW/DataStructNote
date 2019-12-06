@@ -21,6 +21,7 @@ func ListSingle(head *HeroNode) {
 	temp := head
 	if temp.Next == nil {
 		fmt.Println("empty single LinkedList")
+		return
 	}
 	for {
 		fmt.Println(temp.Next)
@@ -126,6 +127,8 @@ func main() {
 	InsertHeroNode2(head, hero2)
 	InsertHeroNode2(head, hero4)
 	DelHeroNode(head, 3)
+	DelHeroNode(head, 2)
+	DelHeroNode(head, 1)
 	fmt.Println()
 	ListSingle(head)
 }
