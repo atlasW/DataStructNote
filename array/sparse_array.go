@@ -10,7 +10,7 @@ import (
 )
 
 //参数 二维数组的行数和列数，还有最常出现的值
-func Sparse(orginal [10][10]int, often int) (sparsed [][]int) {
+func Sparse(orginal [20][10]int, often int) (sparsed [][]int) {
 	sparsed = append(sparsed, []int{cap(orginal), cap(orginal[0]), often})
 	for row, v := range orginal {
 		for column, v1 := range v {
@@ -34,8 +34,8 @@ func SparseRestore(sparsed [][]int) (result [][]int, err error) {
 	totalCol := sparsed[0][1]
 	often := sparsed[0][2]
 	var temp []int
-	for i := 0; i < totalCol; i++ {
-		for j := 0; j < totalRow; j++ {
+	for i := 0; i < totalRow; i++ {
+		for j := 0; j < totalCol; j++ {
 			temp = append(temp, often)
 		}
 		result = append(result, temp)
@@ -53,7 +53,7 @@ func SparseRestore(sparsed [][]int) (result [][]int, err error) {
 
 func main() {
 	//原始数组
-	var OriArray [10][10]int
+	var OriArray [20][10]int
 	OriArray[3][4] = 1
 	OriArray[5][5] = 2
 	OriArray[3][3] = 1
@@ -63,7 +63,7 @@ func main() {
 	}
 	fmt.Println(Sparse(OriArray, 0))
 	fmt.Println("恢复后的数据")
-	a, _ := SparseRestore(Sparse(OriArray, 0))
+	a, _ := SparseRestore(Sparse(OriArray, 1))
 	for _, i := range a {
 		fmt.Println(i)
 	}
