@@ -4,6 +4,7 @@ import "fmt"
 
 /*
 带head单链表例子,demo
+梁山好汉排行榜
 */
 
 type HeroNode struct {
@@ -51,21 +52,47 @@ func InsertHeroNode(head *HeroNode, newheroNode *HeroNode) {
 func InsertHeroNode2(head *HeroNode, newheroNode *HeroNode) {
 	temp := head
 	//思路需要清晰
+	flag := true
 	for {
 		if temp.Next == nil { //若干为空链表,直接出去
 			break
-		} else if newheroNode.No >= temp.Next.No { //不满足条件 辅助节点右移.temp永远在不满足条件的前一位
+		} else if newheroNode.No > temp.Next.No { //不满足条件 辅助节点右移.temp永远在不满足条件的前一位
 			temp = temp.Next
+		} else if newheroNode.No == temp.Next.No { //不允许同id插入
+			flag = false
+			break
 		} else { //满足条件直接插入
 			break
 		}
 	}
 	//插入数据
+	if !flag {
+		fmt.Println("主键冲突")
+		return
+	}
 	newheroNode.Next = temp.Next
 	temp.Next = newheroNode
 }
 
-//给链表减少一个节点
+//给链表删除一个节点 //只适用没有重复id的链表
+func DelHeroNode(head *HeroNode, id int) {
+	temp := head
+	for {
+		if temp.Next == nil { //若为空链表,直接出去
+			break
+		} else if id != temp.Next.No { //不满足条件 辅助节点右移.temp永远在不满足条件的前一位
+			temp = temp.Next
+		} else { //满足条件
+			break
+		}
+	}
+	//判断是否有需要删除的id
+	if temp.Next != nil {
+		temp.Next = temp.Next.Next
+	} else {
+		fmt.Println("没有该需要删除的id")
+	}
+}
 
 func main() {
 	//init singleNodeLinked
@@ -96,8 +123,9 @@ func main() {
 	//
 	InsertHeroNode2(head, hero1)
 	InsertHeroNode2(head, hero3)
-	InsertHeroNode2(head, hero4)
 	InsertHeroNode2(head, hero2)
+	InsertHeroNode2(head, hero4)
+	DelHeroNode(head, 3)
+	fmt.Println()
 	ListSingle(head)
-
 }
