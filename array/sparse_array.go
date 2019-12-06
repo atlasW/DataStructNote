@@ -9,7 +9,7 @@ import (
 	"fmt"
 )
 
-//参数 二维数组的行数和列数，还有最常出现的值
+//参数 原始矩阵，还有最常出现的值
 func Sparse(orginal [][]int, often int) (sparsed [][]int) {
 	high := len(orginal)
 	wide := len(orginal[0])
@@ -25,6 +25,7 @@ func Sparse(orginal [][]int, often int) (sparsed [][]int) {
 	return
 }
 
+//稀疏矩阵恢复成原始矩阵
 func SparseRestore(sparsed [][]int) (result [][]int, err error) {
 	if len(sparsed[0]) != 3 {
 		err = errors.New("不符合二维数组稀疏数组。")
