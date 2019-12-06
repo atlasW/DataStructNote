@@ -23,20 +23,29 @@ func Sparse(orginal [10][10]int, often int) (sparsed [][]int) {
 	return
 }
 
-func SparseRestore(sparsed [][]int) (err error) {
+func SparseRestore(sparsed [][]int) (result [][]int, err error) {
 	if len(sparsed[0]) != 3 {
 		err = errors.New("不符合二维数组稀疏数组。")
 		return
 	}
 	// restore
-	totalRow = sparsed[0][0]
+	//first restore with all often
+	totalRow := sparsed[0][0]
 	totalCol := sparsed[0][1]
 	often := sparsed[0][2]
-	var result [totalCol][totalRow]int
-
-	for kk, vv := range result {
-		for kkk, vvv := range vv {
-			result[kk][kkk] = often
+	var temp []int
+	for i := 0; i < totalCol; i++ {
+		for j := 0; j < totalRow; j++ {
+			temp = append(temp, often)
+		}
+		result = append(result, temp)
+		temp = []int{}
+	}
+	fmt.Println(result)
+	//填充数据
+	for k, v := range sparsed {
+		if k != 0 {
+			result[v[0]][v[1]] = v[2]
 		}
 	}
 	return
@@ -53,4 +62,9 @@ func main() {
 		fmt.Println(i)
 	}
 	fmt.Println(Sparse(OriArray, 0))
+	fmt.Println("恢复后的数据")
+	a, _ := SparseRestore(Sparse(OriArray, 0))
+	for _, i := range a {
+		fmt.Println(i)
+	}
 }
