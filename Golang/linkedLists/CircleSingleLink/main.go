@@ -110,8 +110,8 @@ func main() {
 	InsertCat(head, cat2)
 	InsertCat(head, cat3)
 	ShowCat(head)
-	DelCatNode(head, 2)
-	DelCatNode(head, 30)
+	DelCatNode(head, 1)
+	DelCatNode(head, 3)
 	fmt.Println("删除后")
 	ShowCat(head)
 }
