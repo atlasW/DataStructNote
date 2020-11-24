@@ -76,3 +76,17 @@ func Bubble_Sort3(arr []int) []int {
 	}
 	return arr
 }
+
+func Bubble_Sort4(arr []int) {
+	swapped := true
+	len := len(arr)
+	for swapped {
+		swapped = false
+		for i := 0; i < len-1; i++ {
+			if arr[i] > arr[i+1] {
+				arr[i], arr[i+1] = arr[i+1], arr[i]
+				swapped = true
+			}
+		}
+	}
+}
