@@ -8,7 +8,8 @@ import (
 func main() {
 	startT := time.Now() //计算当前时间
 
-	a := []int{5, 2, 3, 56, 21, 111, 333, 55, 12, 1, 22}
+	//	a := []int{5, 2, 3, 56, 21, 111, 333, 55, 12, 1, 22}
+	a := []int{1, 2, 3, 4, 5, 7, 6}
 	//SelectSort(a)
 	//	selection_sort(a)
 	fmt.Println(a)
@@ -68,10 +69,16 @@ func Bubble_Sort2(array []int) {
 func Bubble_Sort3(arr []int) []int {
 	length := len(arr)
 	for i := 0; i < length; i++ {
+		swap := 0
 		for j := 0; j < length-1-i; j++ {
 			if arr[j] > arr[j+1] {
 				arr[j], arr[j+1] = arr[j+1], arr[j]
+				swap++
 			}
+		}
+		fmt.Println(swap)
+		if swap == 0 {
+			break
 		}
 	}
 	return arr
