@@ -13,7 +13,8 @@ func main() {
 	//SelectSort(a)
 	//	selection_sort(a)
 	fmt.Println(a)
-	Bubble_Sort3(a)
+	//Bubble_Sort3(a)
+	insertionSort(a, 0, 11)
 	fmt.Println(a)
 
 	tc := time.Since(startT) //计算耗时
@@ -37,7 +38,7 @@ func SelectSort(array []int) {
 	}
 }
 
-//冒泡 ? ?
+//冒泡 O(n^2)   O(n)  O(n^2)
 func Bubble_Sort(array []int) {
 	for i := 0; i < len(array)-1; i++ {
 		//误区了 。。。 最大或者最小的数 堆积在了右边  而不在左边。。。
@@ -69,6 +70,7 @@ func Bubble_Sort2(array []int) {
 func Bubble_Sort3(arr []int) []int {
 	length := len(arr)
 	for i := 0; i < length; i++ {
+<<<<<<< HEAD:Golang/sort/select_sort.go
 		swap := 0
 		for j := 0; j < length-1-i; j++ {
 			if arr[j] > arr[j+1] {
@@ -78,6 +80,17 @@ func Bubble_Sort3(arr []int) []int {
 		}
 		fmt.Println(swap)
 		if swap == 0 {
+=======
+		//让最好时间为O(n)的一个变量
+		swap := false
+		for j := 0; j < length-1-i; j++ {
+			if arr[j] > arr[j+1] {
+				arr[j], arr[j+1] = arr[j+1], arr[j]
+				swap = true
+			}
+		}
+		if swap == false {
+>>>>>>> c68317fc2a289531e9e57a644f2498bc921a65d0:Golang/sort/sort.go
 			break
 		}
 	}
@@ -94,6 +107,17 @@ func Bubble_Sort4(arr []int) {
 				arr[i], arr[i+1] = arr[i+1], arr[i]
 				swapped = true
 			}
+		}
+	}
+}
+
+// Insertion sort
+func insertionSort(data []int, a, b int) {
+	for i := a + 1; i < b; i++ {
+		//最好情况下，数组已经是有序的，每插入一个元素，只需要考查前一个元素，因此最好情况下，插入排序的时间复杂度为O(N)。
+		//   data[j] < data[j-1] 这一步就失败了
+		for j := i; j > a && data[j] < data[j-1]; j-- {
+			data[j], data[j-1] = data[j-1], data[j]
 		}
 	}
 }
