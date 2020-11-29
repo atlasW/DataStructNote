@@ -5,16 +5,28 @@ import (
 	"fmt"
 )
 
+//func main() {
+//	var list ArrayList.List = ArrayList.NewArrayList()
+//	list.Append("a1")
+//	list.Append("b2")
+//	list.Append("c3")
+//	list.Append("c3")
+//	list.Append("c3")
+//	for it := list.Iterator(); it.HasNext(); {
+//		item, _ := it.Next()
+//		fmt.Println(item)
+//	}
+//	fmt.Println(list)
+//}
+
 func main() {
-	var list ArrayList.List = ArrayList.NewArrayList()
-	list.Append("a1")
-	list.Append("b2")
-	list.Append("c3")
-	list.Append("c3")
-	list.Append("c3")
-	for it := list.Iterator(); it.HasNext(); {
-		item, _ := it.Next()
-		fmt.Println(item)
-	}
-	fmt.Println(list)
+	myst := ArrayList.NewArrayListStack()
+	myst.Push(11)
+	myst.Push(22)
+	myst.Push(33)
+	myst.Push(44)
+	fmt.Println(myst.Pop())
+	fmt.Println(myst.Pop())
+	fmt.Println(myst.Pop())
+	fmt.Println(myst.Pop())
 }
