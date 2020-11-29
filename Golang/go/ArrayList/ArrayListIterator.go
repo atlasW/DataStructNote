@@ -9,6 +9,11 @@ type Iterator interface {
 	GetIndex() int
 }
 
+/*
+ |         |  |
+[0,1,2,3,4,5]
+*/
+
 //type Iterable interface {
 //	Iterator() Iterator
 //}
