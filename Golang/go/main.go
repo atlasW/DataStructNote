@@ -1,10 +1,5 @@
 package main
 
-import (
-	"atlas/ArrayList"
-	"fmt"
-)
-
 //func main() {
 //	var list ArrayList.List = ArrayList.NewArrayList()
 //	list.Append("a1")
@@ -19,14 +14,16 @@ import (
 //	fmt.Println(list)
 //}
 
-func main() {
-	myst := ArrayList.NewArrayListStack()
-	myst.Push(11)
-	myst.Push(22)
-	myst.Push(33)
-	myst.Push(44)
-	fmt.Println(myst.Pop())
-	fmt.Println(myst.Pop())
-	fmt.Println(myst.Pop())
-	fmt.Println(myst.Pop())
-}
+//func main() {
+//	myst := ArrayList.NewArrayListStackX()
+//	myst.Push(11)
+//	myst.Push(22)
+//	myst.Push(33)
+//	myst.Push(44)
+//	//iterator
+//	for it := myst.Myit; it.HasNext(); {
+//		item, _ := it.Next()
+//		fmt.Println(item)
+//	}
+//	fmt.Println(myst.Pop())
+//}

@@ -14,9 +14,9 @@ type Iterator interface {
 [0,1,2,3,4,5]
 */
 
-//type Iterable interface {
-//	Iterator() Iterator
-//}
+type Iterable interface {
+	Iterator() Iterator
+}
 
 type ArrayListIterator struct {
 	list         *ArrayList

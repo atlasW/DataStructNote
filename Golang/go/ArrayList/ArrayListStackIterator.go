@@ -1,56 +1,66 @@
 package ArrayList
 
-import "errors"
-
-type Iterator interface {
-	HasNext() bool
-	Next() (interface{}, error)
-	Remove()
-	GetIndex() int
+type StackXArray interface {
+	Clean()
+	Size() int
+	Pop() interface{}
+	Push(data interface{})
+	IsFull() bool
+	IsEmpty() bool
 }
 
-/*
- |         |  |
-[0,1,2,3,4,5]
-*/
-
-//type Iterable interface {
-//	Iterator() Iterator
-//}
-
-type ArrayListIterator struct {
-	list         *ArrayList
-	currentIndex int
+type StackX struct {
+	dataSource *ArrayList
+	Myit       Iterator
 }
 
-//实现接口
-
-func (this *ArrayList) Iterator() Iterator {
-	it := new(ArrayListIterator)
-	it.list = this
-	it.currentIndex = 0
-	return it
-}
-
-func (this *ArrayListIterator) HasNext() bool {
-	return this.currentIndex < this.list.TheSize
+func NewArrayListStackX() *StackX {
+	myStackX := new(StackX)
+	myStackX.dataSource = NewArrayList()
+	myStackX.Myit = myStackX.dataSource.Iterator()
+	return myStackX
 
 }
 
-func (this *ArrayListIterator) Next() (interface{}, error) {
-	if !this.HasNext() {
-		return nil, errors.New("没有下一个")
+func (st *StackX) Clean() {
+	// st.dataSource = make([]interface{}, 0, 10)
+	st.dataSource.Clean()
+	st.dataSource.TheSize = 0
+
+}
+
+func (st *StackX) Size() int {
+	return st.dataSource.TheSize
+}
+
+func (st *StackX) Pop() interface{} {
+	if st.IsEmpty() {
+		return nil
 	}
-	value, err := this.list.Get(this.currentIndex)
-	this.currentIndex++
-	return value, err
+	last := st.dataSource.dataStore[st.dataSource.TheSize-1]
+	st.dataSource.Delete(st.dataSource.TheSize - 1)
+	return last
 
 }
-func (this *ArrayListIterator) Remove() {
-	this.currentIndex--
-	this.list.Delete(this.currentIndex)
+
+func (st *StackX) Push(data interface{}) {
+	if !st.IsFull() {
+		st.dataSource.Append(data)
+
+	}
+}
+
+func (st *StackX) IsFull() bool {
+	if st.dataSource.TheSize >= 10 {
+		return true
+	}
+	return false
 
 }
-func (this *ArrayListIterator) GetIndex() int {
-	return this.currentIndex
+
+func (st *StackX) IsEmpty() bool {
+	if st.dataSource.TheSize == 0 {
+		return true
+	}
+	return false
 }
