@@ -1,7 +1,7 @@
 package main
 
 import (
-	"atlas/Link"
+	"atlas/Sort"
 	"fmt"
 )
 
@@ -108,16 +108,29 @@ import (
 // 		fmt.Println(data)
 // 	}
 // }
+//
+//func main() {
+//	linkqueue := Link.NewLinkQueue()
+//	for i := 0; i < 100; i++ {
+//		linkqueue.EnQueue(i)
+//	}
+//
+//	// for i := 0; i < 99; i++ {
+//	// 	fmt.Println(linkqueue.DeQueue())
+//	// }
+//	fmt.Println(linkqueue.Length())
+//
+//}
 
+//selectsort
 func main() {
-	linkqueue := Link.NewLinkQueue()
-	for i := 0; i < 100; i++ {
-		linkqueue.EnQueue(i)
-	}
-
-	// for i := 0; i < 99; i++ {
-	// 	fmt.Println(linkqueue.DeQueue())
-	// }
-	fmt.Println(linkqueue.Length())
+	a := []int{2, 3, 1, 2, 4, 5, 7, 8, 4}
+	//Sort.SelectSort(a)
+	Sort.InsertionSort2(a)
+	fmt.Println(a)
+	b := []string{"c", "a", "b", "x", "D", "f", "a2", "a1d"}
+	//Sort.SelectSortString(b)
+	Sort.InsertionSortString(b)
+	fmt.Println(b)
 
 }

@@ -14,7 +14,7 @@ func main() {
 	//	selection_sort(a)
 	fmt.Println(a)
 	//Bubble_Sort3(a)
-	insertionSort(a, 0, 11)
+	insertionSort(a, 3, 7)
 	fmt.Println(a)
 
 	tc := time.Since(startT) //计算耗时
@@ -70,17 +70,6 @@ func Bubble_Sort2(array []int) {
 func Bubble_Sort3(arr []int) []int {
 	length := len(arr)
 	for i := 0; i < length; i++ {
-<<<<<<< HEAD:Golang/sort/select_sort.go
-		swap := 0
-		for j := 0; j < length-1-i; j++ {
-			if arr[j] > arr[j+1] {
-				arr[j], arr[j+1] = arr[j+1], arr[j]
-				swap++
-			}
-		}
-		fmt.Println(swap)
-		if swap == 0 {
-=======
 		//让最好时间为O(n)的一个变量
 		swap := false
 		for j := 0; j < length-1-i; j++ {
@@ -90,7 +79,6 @@ func Bubble_Sort3(arr []int) []int {
 			}
 		}
 		if swap == false {
->>>>>>> c68317fc2a289531e9e57a644f2498bc921a65d0:Golang/sort/sort.go
 			break
 		}
 	}
