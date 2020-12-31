@@ -47,7 +47,7 @@ func merge(left, right []int) []int {
 }
 
 func main() {
-	a := []int{23, 25, 734, 21, 1, 45, 2, 66, 3, 8, 9, 3, 4, 6}
+	a := []int{25, 734, 21, 1, 45, 2, 66, 3, 8, 9, 3, 4, 6}
 	fmt.Println(a)
 	fmt.Println(MergeSort(a))
 }
