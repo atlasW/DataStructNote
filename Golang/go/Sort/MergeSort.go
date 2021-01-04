@@ -1,4 +1,4 @@
-package main
+package sort
 
 import "fmt"
 
@@ -46,8 +46,48 @@ func merge(left, right []int) []int {
 
 }
 
-func main() {
-	a := []int{25, 734, 21, 1, 45, 2, 66, 3, 8, 9, 3, 4, 6}
-	fmt.Println(a)
-	fmt.Println(MergeSort(a))
+//递归
+func MergeSort2(data []int) []int {
+	sum := len(data)
+	if sum <= 1 {
+		return data
+	}
+	left := data[0 : sum/2]
+	lSize := len(left)
+	if lSize >= 2 {
+		left = MergeSort2(left)
+	}
+	right := data[sum/2:]
+	rSize := len(right)
+	if rSize >= 2 {
+		right = MergeSort2(right)
+	}
+	j := 0
+	t := 0
+	arr := make([]int, sum)
+	fmt.Println(left, right, data)
+	for i := 0; i < sum; i++ {
+		if j < lSize && t < rSize {
+			if left[j] <= right[t] {
+				arr[i] = left[j]
+				j++
+			} else {
+				arr[i] = right[t]
+				t++
+			}
+		} else if j >= lSize {
+			arr[i] = right[t]
+			t++
+		} else if t >= rSize {
+			arr[i] = left[j]
+			j++
+		}
+	}
+	return arr
 }
+
+//func main() {
+//	a := []int{25, 734, 21, 1, 45, 2, 66, 3, 8, 9, 3, 4, 6}
+//	fmt.Println(a)
+//	fmt.Println(MergeSort2(a))
+//}

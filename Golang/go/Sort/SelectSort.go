@@ -1,4 +1,4 @@
-package Sort
+package sort
 
 // 1 9 2 8 4 6 7 5
 // 9

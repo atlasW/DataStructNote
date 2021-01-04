@@ -1,7 +1,7 @@
 package main
 
 import (
-	"atlas/Sort"
+	sort "atlas/Sort"
 	"fmt"
 )
 
@@ -126,11 +126,9 @@ import (
 func main() {
 	a := []int{2, 3, 1, 2, 4, 5, 7, 8, 4}
 	//Sort.SelectSort(a)
-	Sort.InsertionSort2(a)
 	fmt.Println(a)
-	b := []string{"c", "a", "b", "x", "D", "f", "a2", "a1d"}
 	//Sort.SelectSortString(b)
-	Sort.InsertionSortString(b)
-	fmt.Println(b)
+	sort.ShellSort(a)
+	fmt.Println(a)
 
 }
