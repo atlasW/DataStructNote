@@ -1,3 +1,3 @@
 # DataStructNote
-数据结构学习笔记   golang版
+数据结构   Golang 和 JAVA 打卡笔记 
 ##
