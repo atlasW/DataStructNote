@@ -39,7 +39,7 @@ func main() {
 	jsonfile, _ := os.Open(path)
 	i := 0 //行数
 	br := bufio.NewReader(jsonfile)
-	StructArry := make([]Location, N, N)
+	StructArry := make([]Location, 1000000, 1000000)
 	var line []byte
 	var err error
 	var value Location
