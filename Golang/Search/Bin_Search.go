@@ -1,8 +1,10 @@
 package search
 
 /*
+先排序 再
 二分查找法
 */
+
 func BinSearch(arr []int, data int) int {
 	left := 0
 	right := len(arr) - 1

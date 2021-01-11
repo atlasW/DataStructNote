@@ -130,6 +130,7 @@ func main() {
 	fmt.Println(a)
 	//Sort.SelectSortString(b)
 	sort.ShellSort(a)
+	fmt.Println(a)
 	fmt.Println(search.BinSearch(a, 5))
 
 }
