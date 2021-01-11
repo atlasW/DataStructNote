@@ -1,4 +1,4 @@
-package main
+package sort
 
 import (
 	"fmt"
@@ -112,31 +112,32 @@ func RadixSort(theArray []int) []int {
 	return theArray
 
 }
-func SelectSort(this []int) {
-	lenth := len(this)
-	if lenth <= 1 {
-	} else {
-		//只剩一个元素 不需要挑选
-		for i := 0; i < lenth-1; i++ {
-			min := i
-			for j := i + 1; j < lenth; j++ {
-				if this[min] > this[j] {
-					min = j
-				}
-			}
-			if i != min {
-				this[i], this[min] = this[min], this[i]
-			}
-		}
-	}
-}
 
-func main() {
-	a := []int{11, 91, 222, 878, 348, 7123, 4123, 6232, 5123, 1011}
-	//	a := []int{3, 2, 2, 5, 4, 3, 6, 2, 3, 4, 4, 9, 3, 2, 2, 5, 4, 3, 6, 2, 3, 4, 4, 9, 2, 2, 5, 4, 3, 6, 2, 3, 4, 4, 9, 9, 2, 2, 5, 4, 3, 6, 2, 3, 4, 4, 9, 9, 2, 2, 5, 4, 3, 6, 2, 3, 4, 4, 9, 9, 2, 2, 5, 4, 3, 6, 2, 3, 4, 4, 9, 9, 2, 2, 5, 4, 3, 6, 2, 3, 4, 4, 9}
-	fmt.Println(len(a))
-	// 	b := countingSort(a, 2, 9)
-	//b := BucketSort(a, 7123)
-	b := RadixSort(a)
-	fmt.Printf("%+v\n", b)
-}
+//func SelectSort(this []int) {
+//	lenth := len(this)
+//	if lenth <= 1 {
+//	} else {
+//		//只剩一个元素 不需要挑选
+//		for i := 0; i < lenth-1; i++ {
+//			min := i
+//			for j := i + 1; j < lenth; j++ {
+//				if this[min] > this[j] {
+//					min = j
+//				}
+//			}
+//			if i != min {
+//				this[i], this[min] = this[min], this[i]
+//			}
+//		}
+//	}
+//}
+//
+//func main() {
+//	a := []int{11, 91, 222, 878, 348, 7123, 4123, 6232, 5123, 1011}
+//	//	a := []int{3, 2, 2, 5, 4, 3, 6, 2, 3, 4, 4, 9, 3, 2, 2, 5, 4, 3, 6, 2, 3, 4, 4, 9, 2, 2, 5, 4, 3, 6, 2, 3, 4, 4, 9, 9, 2, 2, 5, 4, 3, 6, 2, 3, 4, 4, 9, 9, 2, 2, 5, 4, 3, 6, 2, 3, 4, 4, 9, 9, 2, 2, 5, 4, 3, 6, 2, 3, 4, 4, 9, 9, 2, 2, 5, 4, 3, 6, 2, 3, 4, 4, 9}
+//	fmt.Println(len(a))
+//	// 	b := countingSort(a, 2, 9)
+//	//b := BucketSort(a, 7123)
+//	b := RadixSort(a)
+//	fmt.Printf("%+v\n", b)
+//}

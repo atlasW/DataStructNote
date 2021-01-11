@@ -1,6 +1,7 @@
 package main
 
 import (
+	search "atlas/Search"
 	sort "atlas/Sort"
 	"fmt"
 )
@@ -124,11 +125,11 @@ import (
 
 //selectsort
 func main() {
-	a := []int{2, 3, 1, 2, 4, 5, 7, 8, 4}
+	a := []int{2, 4, 5, 3, 1, 2, 4, 5, 7, 8, 4}
 	//Sort.SelectSort(a)
 	fmt.Println(a)
 	//Sort.SelectSortString(b)
 	sort.ShellSort(a)
-	fmt.Println(a)
+	fmt.Println(search.BinSearch(a, 5))
 
 }

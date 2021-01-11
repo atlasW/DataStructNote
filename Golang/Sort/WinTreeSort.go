@@ -1,4 +1,4 @@
-package main
+package sort
 
 import (
 	"fmt"
@@ -88,19 +88,19 @@ func pow(x, y int) int {
 	return int(math.Pow(float64(x), float64(y)))
 }
 
-func main() {
-	var length = 10
-	var mm = make(map[int]int, length)
-	var o []int
-
-	// 先准备一个顺序随机的数(qie)组(pian)
-	for i := 0; i < length; i++ {
-		mm[i] = i
-	}
-	for k, _ := range mm {
-		o = append(o, k)
-	}
-
-	fmt.Println(o)
-	treeSelectionSort(o)
-}
+//func main() {
+//	var length = 10
+//	var mm = make(map[int]int, length)
+//	var o []int
+//
+//	// 先准备一个顺序随机的数(qie)组(pian)
+//	for i := 0; i < length; i++ {
+//		mm[i] = i
+//	}
+//	for k, _ := range mm {
+//		o = append(o, k)
+//	}
+//
+//	fmt.Println(o)
+//	treeSelectionSort(o)
+//}
