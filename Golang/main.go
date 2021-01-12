@@ -1,13 +1,8 @@
 package main
 
 import (
-	"bufio"
+	sort "atlas/Sort"
 	"fmt"
-	"io"
-	"os"
-	"time"
-
-	"gopkg.in/mgo.v2/bson"
 )
 
 //func main() {
@@ -141,49 +136,11 @@ import (
 //
 //
 
-// bjson
-// 3G  1323177条
-const BufferSize = 1323177
-
-type gps struct {
-	ID string    `json:"_id"`
-	V  int       `json:"v"`
-	P  int       `json:"p"`
-	I  string    `json:"i"`
-	O  int       `json:"o"`
-	S  int       `json:"s"`
-	L  []float64 `json:"l"`
-	T  time.Time `json:"t"`
-	D  int       `json:"d"`
-	B  int       `json:"b"`
-	C  time.Time `json:"c"`
-}
+//改良版快速排序
 
 func main() {
-	path := "./example/loc_200128.json"
-	fi, err := os.Open(path)
-	if err != nil {
-		fmt.Printf("Error: %s\n", err)
-		return
-	}
-	defer fi.Close()
-	mem := make([]gps, BufferSize)
-	br := bufio.NewReader(fi)
-	i := 0
-	for {
-		a, _, c := br.ReadLine()
-		if c == io.EOF {
-			break
-		}
-		var value gps
-		err = bson.Unmarshal(a, &value)
-		fmt.Println(err)
-		fmt.Printf("%+v\n", value)
-		i++
-		if i == 10 {
-			break
-		}
-	}
+	a := []int{3, 2, 1, 5, 4, 8, 7, 9, 6}
+	sort.QuickSortPlus(a)
+	fmt.Println(a)
 
-	fmt.Println(len(mem))
 }

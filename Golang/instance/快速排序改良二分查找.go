@@ -33,12 +33,15 @@ type Location struct {
 }
 
 func main() {
+	//a := []int{3, 9, 2, 8, 1, 7, 4, 6, 5, 10}
+	//QuickSortPlus(a)
+	//fmt.Println(a)
 	starttime := time.Now()
-	path := "./example/2.json"
+	path := "./example/1.json"
 	jsonfile, _ := os.Open(path)
 	i := 0 //行数
 	br := bufio.NewReader(jsonfile)
-	StructArry := make([]Location, 1000000, 1000000)
+	StructArry := make([]Location, N, N)
 	var line []byte
 	var err error
 	var value Location
@@ -53,7 +56,7 @@ func main() {
 	}
 	fmt.Println("载入数据用时:", time.Since(starttime))
 	starttime = time.Now()
-	QuickSort(StructArry, 0, len(StructArry)-1)
+	QuickSortPlus(StructArry)
 	fmt.Println("排序数据用时:", time.Since(starttime))
 	//
 	for {
@@ -87,34 +90,6 @@ func main() {
 	}
 }
 
-//快速排序
-func partition(a []Location, left, right, pivotIndex int) int {
-	//基准值
-	pivotValue := a[pivotIndex].S
-	// 基准和最后一位 互换
-	a[pivotIndex], a[right] = a[right], a[pivotIndex]
-	storeIndex := left
-	//找到基准所在的位置   //很巧妙的方法  找到基准的位置  并且将 小于基准的移动到基准的左边
-	for i := left; i < right; i++ {
-		if a[i].S <= pivotValue {
-			a[storeIndex], a[i] = a[i], a[storeIndex]
-			storeIndex++
-		}
-
-	}
-	a[right], a[storeIndex] = a[storeIndex], a[right]
-	return storeIndex
-
-}
-func QuickSort(a []Location, left, right int) {
-	if right > left {
-		pivotIndex := left
-		pivotNewIndex := partition(a, left, right, pivotIndex)
-		QuickSort(a, left, pivotNewIndex-1)
-		QuickSort(a, pivotNewIndex+1, right)
-	}
-}
-
 //二分查找
 func BinSearch(arr []Location, data int) int {
 	left := 0
@@ -134,4 +109,58 @@ func BinSearch(arr []Location, data int) int {
 	}
 	fmt.Println("this")
 	return -1
+}
+
+//插入排序
+func SortForMerge(arr []Location, left, right int) {
+	for i := left; i <= right; i++ {
+		temp := arr[i] //备份数据
+		var j int
+		for j = i; j > left && arr[j-1].S > temp.S; j-- { //定位
+			arr[j] = arr[j-1] //数据后移
+		}
+		arr[j] = temp
+	}
+
+}
+
+//改良版本的快速排序  解约内存
+func QuickSortPlus(arr []Location) {
+	QuickSortX(arr, 0, len(arr)-1)
+}
+
+//递归快速排序
+func QuickSortX(arr []Location, left, right int) {
+	//数据量级小的时候直接插入排序
+	if right-left < 3 {
+		SortForMerge(arr, left, right)
+	} else {
+		//随机找个数字
+		vdata := arr[left].S //坐标数,比他小 左边。大 右边
+		lt := left           // arr[left+1,lt] < vdata
+		gt := right + 1      // arr[gt... right] > vdata
+		i := left + 1        // arr[lt+1,i] == vdata
+		for i < gt {
+			if arr[i].S < vdata {
+				swap(arr, i, lt+1) //移动到小于的地方
+				lt++               //前进循环
+				i++
+			} else if arr[i].S > vdata {
+				swap(arr, i, gt-1) //移动到大于的地方
+				gt--
+			} else {
+				i++
+
+			}
+		}
+		swap(arr, left, lt)         //交换头部位置
+		QuickSortX(arr, left, lt-1) //递归处理 小于那一段
+		QuickSortX(arr, gt, right)  //递归处理大于那一段
+
+	}
+
+}
+
+func swap(arr []Location, i, j int) {
+	arr[i], arr[j] = arr[j], arr[i]
 }

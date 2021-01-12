@@ -17,7 +17,7 @@
 /Rjava/.idea/
 
 
-#go  example
-/Golang/example/*
-/Golang/example/
+#go  example data 
+/Golang/data/*
+/Golang/data/
 
