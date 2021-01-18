@@ -1,7 +1,7 @@
 package main
 
 import (
-	sort "atlas/Sort"
+	search "atlas/Search"
 	"fmt"
 )
 
@@ -19,7 +19,7 @@ import (
 //	fmt.Println(list)
 //}
 
-//func main() {
+//func main() {   //main
 //	myst := ArrayList.NewArrayListStackX()
 //	myst.Push(11)
 //	myst.Push(22)
@@ -139,8 +139,9 @@ import (
 //改良版快速排序
 
 func main() {
-	a := []int{3, 2, 1, 5, 4, 8, 7, 9, 6}
-	sort.QuickSortPlus(a)
+	a := []int{3, 2, 1, 5, 4, 8, 7, 9, 6, 4, 22, 1, 2, 33, 6, 3}
+	i := search.BinSearchMid(a, 7)
 	fmt.Println(a)
+	fmt.Println(i)
 
 }
