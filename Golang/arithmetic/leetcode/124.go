@@ -18,7 +18,7 @@ func CreatTree() (tree *TreeNode) {
 	c := &TreeNode{15, nil, nil}
 	d := &TreeNode{7, nil, nil}
 	b := &TreeNode{20, c, d}
-	tree = &TreeNode{9, a, b}
+	tree = &TreeNode{-10, a, b}
 	return
 }
 
