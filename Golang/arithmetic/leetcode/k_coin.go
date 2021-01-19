@@ -108,13 +108,9 @@ func coinChange4(coins []int, amount int) (n int) {
 		for _, coin := range coins {
 			if k-coin < 0 {
 				continue
-			} else if k-coin == 0 {
-				dp[k] = 1
-
 			} else {
 				if dp[k] != 0 {
 					dp[k] = min(dp[k], dp[k-coin]+1)
-
 				} else {
 					dp[k] = dp[k-coin] + 1
 				}
